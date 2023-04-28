@@ -1,4 +1,4 @@
-﻿1A                Implementation of lexical analyzer using C programming
+1A                Implementation of lexical analyzer using C programming
 STEP 1: Start 
 STEP 2: Declare all variables and file pointers 
 STEP 3: Display the input program. 
@@ -100,15 +100,20 @@ fclose(f1);
  printf("\n");  
  fclose(f4);  
 }  OUTPUT: 
-  
-
-  
-
-  
-  
-
-  
-
+Enter the c program 
+a+b+c+d+,.;'
+The constants are
+The keywords and identifiers are:
+a is an identifier
+b is an identifier
+c is an identifier
+d is an identifier
+Special characters are , . ; '
+Operators are + + + +
+IDENTIFI.TXT : a b c d
+OPERATOR.TXT : + + + +
+SPECIA;C.TXT : , . ; '
+INPUTOP.TXT : a+b+c+d+,.;'
 
 
 1B                                Implementation of Lexical analyzer using LEX
@@ -148,7 +153,14 @@ hai
 hello  
 how are you?
 Output : 
-  
+lex Programlex.l
+cc lex.yy.c -ll
+./a.out a.txt
+Number of spaces = 3
+Number of characters = 10
+Number of lines = 3
+Number of words =2
+
 Program for Lexical Analyzer using LEX tool : 
 %{  
 #include<stdio.h>  
@@ -177,9 +189,16 @@ a=b+3;
 printf("Hello world");  
 }
 Output : 
-  
+lex Programlex1.l
+cc lex.yy.c -ll 
+./a.out aa.c
+Keyword
+Keyword	Keyword	Specialcharacter
+Specialcharacter
+Variable Operator Variable Operator Number Specialcharacter
+Keyword Specialcharacter Variable Variable Specialcharacter
+Specialcharacter  
 
-  
 
 2        Implementation of a calculator that takes an expression (with digits, + and *), computes and prints its value, using YACC.
 STEP 1: A YACC source program has three parts as declaration %%translation rules%%. 
@@ -303,7 +322,13 @@ int yyerror(char *msg)
 return fprintf(stderr,"YACC:%s\n",msg); 
 } 
 Output: 
-  
+lex exp3.l
+yacc -d e3.y
+cc lex.yy.c y.tab.c -ll
+./a.out
+(id)
+(Scanned a name
+SUCCESS
 
 
 
@@ -399,9 +424,14 @@ int a , b = 5 ;
 float c ;  
 char d = " a " ;  
 Output : 
-  
-
-
+cc sym.c
+./a.out
+SYMBOL	TABLE	MANAGEMENT
+Variable	Datatype	Line.no.	Value
+a		int		1		garbage
+b		int		1		5
+c		float		2		garbage
+d		char		3		a
 
 
 
@@ -662,7 +692,40 @@ if(e=='Y'||e=='y')
 manipulate_string(); 
 } 
 Output :
-  
+Enter the productions:
+E->TX
+X->+TX/@
+T->FY
+Y->FY/@
+F->(E)/i
+quit
+NT	+	*	(	)	i	$
+E			E->TX		E->TX
+X	x->+TX			X->@		X->@
+T			T->FY		T->FY
+Y	Y->@	Y->*FY		Y->@		Y->@
+F			F->(E)		F->i
+
+Enter the string:i+i*i
+STACK		STRING
+$E		i+i*i$
+$XT		i+i*i$
+$XYF		+i*i$
+$XYI		+i*i$
+$XY		+i*i$
+$X		i*i$
+$XT+		i*i$
+$XT		i*i$
+$XYF		i*i$
+$XYi		i*i$
+$XY		*i$
+$XYF*		*i$
+$XYF		i$
+$XYi		i$
+$XY		$
+$X		$
+$		$
+***string accepted***
 
   
 
@@ -778,9 +841,29 @@ printf("%c",ip[k]);
 printf("\t\t\taccept\n"); 
 } 
 OUTPUT : 
-  
-
-
+cc ShiftReduceParser.c
+./a.out
+Enter the number of productions:3
+Enter the left side of the production 1:E
+Enter the right side of the production 1:E+E
+Enter the left side of the production 2: E
+Enter the right side of the production 2:E*E
+Enter the left side of the production 3: E
+Enter the right side of the production 3:i
+Enter the input:i+i*i
+STACK		INPUT		OUTPUT
+$		i+i*i$		
+$i		+i*i$		shift i
+$E		+i*i$		Reduce E->i
+$E+		i*i$		shift +
+$E+i		*i$		shift i
+$E+E		*i$		Reduce E->i
+$E		*i$		Reduce E->E+E
+$E*		i$		shift *
+$E*i		$		shift i
+$E*E		$		Reduce E->i
+$E		$		Reduce E->E*E
+$E		$		accept
 
 7        Implementation of LR Parser
 
@@ -1011,7 +1094,13 @@ b[k]=b[j];
 printf("\n%s",b); 
 } 
 OUTPUT : 
-  
+skcet@SK-AK:~$ cc frontEnd.c
+skcet@SK-AK:~$ ./a.out
+Enter the code:d=(a-b)+(a-c)+b*c
+t0=b*c
+t1=(a-b)
+t2=(a-c)
+d=t1+t2+t0
 
 
 
@@ -1100,12 +1189,17 @@ fprintf(fp,"R%c,R%d",e,r-1);
 } 
 }        fprintf(fp,"\n%s R1,id1",mov); } 
 OUTPUT: 
-
-
-  
+cc backEnd.c
+./a.out
+Enter the code:id1=id2*id3+id4
 
 out.txt
-  
+MOVF id2, R1
+MOVF id3,R2
+MOVF id4, R3
+ADDF R2, R3
+MULF R2, R1
+MOVF R1,id1
 
 
 
@@ -1198,3 +1292,44 @@ for(i=0;i<z;i++)
 if(pr[i].l!='\0') 
 printf("%c\t=%s\n",pr[i].l,pr[i].r); } 
 Output :
+Enter the no of values:5
+Left a 
+Right 10
+Left b
+Right 20
+Left c
+Right a+b
+Left d
+Right a+b
+Left e
+Right c+d
+
+Intermediate code
+a=10 
+b=20
+c=a+b
+d=a+b
+e=c+d
+
+After dead code elimination
+a=10
+b=20
+c=a+b 
+d=a+b
+
+Eliminate common expression
+a=10
+b=20
+c=a+b 
+c=a+b
+
+Eliminate common expression
+a=10
+b=20
+c=a+b 
+c=a+b
+
+Optimized code =10
+a=10
+b=20
+c=a+b 
