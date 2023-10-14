@@ -1,0 +1,336 @@
+1. Write a Program to Read a file line by line and print the word count of each line with
+Raspberry PI System .
+	1. Open the file you want to read using the `open` function in Python.
+2. Use a `for` loop to iterate through the lines of the file.
+3. For each line, split it into words using the `split` method.
+4. Count the number of words in the line.
+5. Print the line and its word count.
+6. Close the file when you're done.
+# Open the file
+with open("your_file.txt", "r") as file:
+    # Read each line
+    for line in file:
+        # Split the line into words
+        words = line.split()
+        # Calculate the word count
+        word_count = len(words)
+        # Print the word count for each line
+        print(f"Word count in line: {word_count}")
+
+2. Write a Program to Print current time for 10 times with an interval of 10 seconds with
+Raspberry PI System.
+	1. Set the number of times you want to print the current time (e.g., 10 times).
+2. Set the interval between prints in seconds (e.g., 10 seconds).
+3. Use a loop to repeat the following steps as many times as specified.
+4. Get the current time using the `time.strftime` function.
+5. Print the current time.
+6. Wait for the specified interval using `time.sleep`.
+# Set the number of times to print the time
+num_prints = 10
+# Set the interval in seconds
+interval = 10
+for i in range(num_prints):
+    current_time = time.strftime("%Y-%m-%d %H:%M:%S")
+    print("Current Time:", current_time)
+    time.sleep(interval)
+
+3. Write a Program to find Word and character count of a given string with Raspberry PI
+System.
+	1. Get the input string from the user.
+2. Split the input string into words to count the number of words.
+3. Count the number of characters in the input string.
+4. Print the word count and character count.
+# Input string
+input_string = "This is a sample string to count words and characters."
+# Split the string into words
+words = input_string.split()
+word_count = len(words)
+# Calculate the character count
+char_count = len(input_string)
+# Print the word and character counts
+print(f"Word count: {word_count}")
+print(f"Character count: {char_count}")
+
+4. Design an IOT based system to Blink the onboard LED with Arduino board.
+	Components Name Quantity
+1 Arduino Uno 1
+2 USB 2.0 – Mini B Type 1
+3 Power Adaptor – 12 V 1
+4 Off board LED 1
+5 Jumper Wire 2
+6 PC with Windows OS -32/64 bit 1
+void setup()
+{
+pinMode(13, OUTPUT);
+// initialize digital pin 13 as an output.
+}
+void loop()
+{
+digitalWrite(13, HIGH);
+delay(1000);
+digitalWrite(13, LOW);
+delay(1000);
+}
+
+
+5. Design an IOT based system Blink the user LED in Uno using the port D8 with Arduino.
+	Components Name Quantity
+1 Arduino Uno 1
+2 USB 2.0 – Mini B Type 1
+3 Power Adaptor – 12 V 1
+4 Off board LED 1
+5 Jumper Wire 2
+6 PC with Windows OS -32/64 bit 1
+void setup()
+{
+pinMode(4, OUTPUT);
+}
+void loop()
+{
+digitalWrite(4, HIGH);
+delay(1000); // Wait for 1000 millisecond(s)
+digitalWrite(4, LOW);
+delay(1000); // Wait for 1000 millisecond(s)
+}
+
+
+
+6. Design an IOT based system to Switch ON/OFF a LED using a digital Switch-button
+using Internal PullUp variable.
+	Components Name Quantity
+1 Arduino Uno 1
+2 USB 2.0 – Mini B Type 1
+3 Power Adaptor – 12 V 1
+4 3pin RMC Cable 2
+5 PC with Windows OS -32/64 bit 1
+int button=0;
+void setup()
+{
+pinMode(8, OUTPUT);
+pinMode(4, INPUT_PULLUP);
+}
+void loop()
+{
+button=digitalRead(4);
+if(button==LOW)
+{
+digitalWrite(8, HIGH);
+}
+else
+{
+digitalWrite(8,LOW);
+}
+
+
+7. Design an IOT based system to Read the analog values of “Temperature Sensor 36”
+and print it on serial monitor.
+	S.NO Components Name Quantity
+1 Arduino Uno 1
+2 USB 2.0 – Mini B Type 1
+3 Power Adaptor – 12 V 1
+4 3pin RMC Cable 2
+5 PC with Windows OS -32/64 bit 1
+6 LCD 16 x 27 1
+7 Temperature Sensor 36 1
+8 Potentiometer 1
+Read the analog values of “Temperature Sensor 36” and print it on serial monitor
+void setup()
+{
+Serial.begin(9600);
+}
+void loop()
+{
+int reading=analogRead(A0);
+floatvoltage=(reading*5.0)/1024;
+float tempC=(voltage-0.5)*100;
+Serial.print("TempC");
+Serial.println(tempC);
+float tempF=(tempC*9.0/5.0)+32.0;
+Serial.print("TempF");
+Serial.println(tempF);
+}
+Display text on LCD screen
+#include<LiquidCrystal.h>
+LiquidCrystal lcd(12,11,5,4,3,2);
+void setup()
+{
+lcd.begin(16,2);
+lcd.print("Hello IOT");
+}
+void loop()
+{
+lcd.setCursor(0,1);
+lcd.print(millis()/1000);
+}
+Read the value of temperature
+#include<LiquidCrystal.h>
+LiquidCrystal lcd(12,11,5,4,3,2);
+void setup()
+{
+Serial.begin(9600);
+lcd.begin(16,2);
+lcd.print("Hello IOT");
+}
+void loop()
+{
+lcd.setCursor(0,1);
+lcd.print(millis()/1000);
+int reading=analogRead(A0);
+float voltage=(reading * 5.0)/1024;
+float tempC=(voltage-0.5)*100;
+Serial.print("TempC\n");
+Serial.println(tempC);
+float tempF=(tempC*9.0/5.0)+32.0;
+Serial.print("TempF\n");
+Serial.println(tempF);
+}
+
+8. Design an IOT based system for traffic management system.
+	Procedure:
+1. Use cisco Packet Tracer or Tinkercad tool to simulate the system.
+2. Prepare the required model diagram with list of Sensors and Activators for input and output.
+3. Select the processor and cloud connectivity method for the system
+4. Implement the model diagram in the simulator by tracking the components and give connections
+suitably.
+5. Configure the components and modify the program based on requirements
+6. Run the system. Debug the system with data flow, if error occurred.
+7. Check the output and compare it with real-time or predefined values.
+8. After successful simulation transfer the code to the respective board and develop the hardware model
+    +-------------------+    +-----------------+   +--------------+
+    |    Traffic        |    |                 |   |  Traffic     |
+    |   Sensors (e.g.,  |    |   Processor    |   |  Activators  |
+    |   Cameras,        |<-->| (Raspberry Pi, |<-->|  (Traffic    |
+    |   Vehicle Sensors,|    |   Intel Edison) |   |  Lights,     |
+    |   Environmental   |    |                 |   |  Message     |
+    |   Sensors, etc.)  |    |                 |   |  Signs, etc.) |
+    +-------------------+    +-----------------+   +--------------+
+           |   |                   |                  |
+           |   |                   |                  |
+           |   |                   |                  |
+           |   |                   |                  |
+           v   v                   v                  v
+    +--------------+         +--------------+    +--------------+
+    |   Cloud     |         |   Data       |    |   User       |
+    |   Platform  |         |   Processing  |    |   Interface  |
+    |   (e.g., AWS,|         |   & Analysis  |    |   (Web/Mobile)|
+    |   Azure, etc.)|         |   Algorithms  |    +--------------+
+    +--------------+         +--------------+
+
+
+9. Develop the Vehicle Parking System in Smart Cities using IoE.
+	Procedure:
+1. Use cisco Packet Tracer or Tinkercad tool to simulate the system.
+2. Prepare the required model diagram with list of Sensors and Activators for input and output.
+3. Select the processor and cloud connectivity method for the system
+4. Implement the model diagram in the simulator by tracking the components and give connections
+suitably.
+5. Configure the components and modify the program based on requirements
+6. Run the system. Debug the system with data flow, if error occurred.
+7. Check the output and compare it with real-time or predefined values.
+8. After successful simulation transfer the code to the respective board and develop the hardware model
+| Vehicle Parking App I
+(Web/Mobile)
+
+Backend Server
+
+Cloud Platform
+(AWS, Azure, etc.) I
+
+Microcontrollers
+(Arduino, etc.) 1
++ Parking Sensors 1
++ Communication
+
+| Parking Space
+(with Sensors)
+
+
+10. Develop an IoE-Enabled Healthcare System for Remote Patient Monitoring.
+11. Develop an IoE-Enabled Healthcare System for Near Patient Monitoring
+installation.
+1. IoT Sensors and Devices
+• Introduction to IoT healthcare devices
+• Hands-on exercises:
+• Setting up wearable devices (e.g., smartwatches)
+• Configuring vital signs monitoring devices
+• Testing home-based medical devices (e.g., ECG monitors)
+2. Communication Infrastructure
+• Types of communication (Wi-Fi, cellular, etc.)
+• Establishing internet connectivity
+• Ensuring secure data transmission
+3. Cloud Computing
+• Introduction to cloud platforms (e.g., AWS, Azure)
+• Setting up a cloud environment for healthcare data
+• Data storage and security in the cloud
+4. Data Collection and Transmission
+• Collecting health data from IoT devices
+• Transmitting data securely to the cloud
+• Hands-on exercises: Data transmission setup
+5. Data Processing and Analysis
+• Real-time data processing in the cloud
+• Implementing machine learning for data analysis
+• Hands-on exercises: Implementing data analysis algorithms
+6. Alerts and Notifications
+• Designing alert systems for patients and healthcare providers
+• Customizing alerts based on health data
+• Hands-on exercises: Creating alert mechanisms
+7. User-Friendly Applications
+• Developing mobile/web apps for patients and healthcare providers
+• Interface design and usability
+• Hands-on exercises: App development and customization
+8. Data Visualization
+• Presenting health data through dashboards and charts
+• Patient tracking and progress monitoring
+• Hands-on exercises: Data visualization setup
+9. Telehealth Integration
+• Integrating telehealth features for remote consultations
+• Setting up video conferencing and communication tools
+• Hands-on exercises: Telehealth integration
+Sample code:
+import random
+import time
+import requests
+# Simulated IoT devices (vital signs)
+class VitalSignsSensor:
+ def __init__(self, patient_id):
+ self.patient_id = patient_id
+ def read_vital_signs(self):
+ heart_rate = random.randint(60, 100)
+ blood_pressure = f"{random.randint(90, 140)}/{random.randint(60, 90)}"
+ glucose_level = random.uniform(80, 150)
+ return {
+ "patient_id": self.patient_id,
+ "heart_rate": heart_rate,
+ "blood_pressure": blood_pressure,
+ "glucose_level": glucose_level,
+ }
+# Simulated cloud platform (data reception)
+def send_data_to_cloud(data):
+ # In a real-world scenario, replace this with API calls to a cloud platform.
+ print("Sending data to cloud:", data)
+# Main program
+def main():
+ patient_id = 123 # Replace with actual patient ID
+ sensor = VitalSignsSensor(patient_id)
+ while True:
+ vital_signs_data = sensor.read_vital_signs()
+ send_data_to_cloud(vital_signs_data)
+
+ # Simulate data collection every 5 seconds
+ time.sleep(5)
+if __name__ == "__main__":
+ main()
+Explanation:
+1. The program simulates an IoT device (vital signs sensor) that reads patient vital signs data (heart rate, blood
+pressure, glucose level) and sends it to a cloud-based platform.
+2. In a real-world scenario, you would replace the simulated data with actual data obtained from IoT sensors
+worn by the patient.
+3. The send_data_to_cloud function represents the process of transmitting patient data to a cloud-based
+platform. In a real-world system, you would use appropriate APIs and secure communication protocols to
+send this data to a cloud server.
+4. The main loop of the program continuously collects and sends data every 5 seconds, simulating real-time
+monitoring.
+Remember that building a complete IoE-enabled healthcare system involves many more components, including data
+storage, analysis, security, and user interfaces. Additionally, compliance with healthcare regulations, such as HIPAA,
+is essential when handling patient data. This example serves as a basic illustration of data collection and transmission
+in such a system
